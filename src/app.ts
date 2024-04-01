@@ -1,9 +1,10 @@
 import fastify from 'fastify'
 import { z } from 'zod'
+import { prisma } from './lib/prisma'
 
 export const app = fastify()
 
-app.post('/events', (req, reply) => {
+app.post('/events', async (req, reply) => {
   const createEventSchema = z.object({
     title: z.string().min(4),
     details: z.string().nullable(),
@@ -16,11 +17,16 @@ app.post('/events', (req, reply) => {
     maximumAttendees
   } = createEventSchema.parse(req.body)
 
-  return reply.status(201).send({
-    event: {
+  const event = await prisma.event.create({
+    data: {
       title,
       details,
-      maximumAttendees
+      maximumAttendees,
+      slug: new Date().toISOString(), // TODO: generate slug
     }
+  })
+
+  return reply.status(201).send({
+    eventId: event.id,
   })
 })

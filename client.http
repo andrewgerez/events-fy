@@ -2,7 +2,7 @@ POST http://localhost:3333/events
 Content-Type: application/json
 
 {
-  "title": "Unite Summit",
+  "title": "Unite 2 Summit",
   "details": "Event of the day: events.fy launch!",
   "maximumAttendees": 100
 }

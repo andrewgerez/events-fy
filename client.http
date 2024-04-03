@@ -2,14 +2,14 @@ POST http://localhost:3333/events
 Content-Type: application/json
 
 {
-  "title": "Unite Summit",
-  "details": "Event of the day: events.fy launch!",
-  "maximumAttendees": 100
+  "title": "New Unite Summit",
+  "details": null,
+  "maximumAttendees": 1
 }
 
 ###
 
-POST http://localhost:3333/events/acc20df2-4d78-4ea6-b61d-fbe56af8ea6d/attendees
+POST http://localhost:3333/events/aee468f7-cae3-4a78-8d76-6737966bba26/attendees
 Content-Type: application/json
 
 {

@@ -6,3 +6,13 @@ Content-Type: application/json
   "details": "Event of the day: events.fy launch!",
   "maximumAttendees": 100
 }
+
+###
+
+POST http://localhost:3333/events/acc20df2-4d78-4ea6-b61d-fbe56af8ea6d/attendees
+Content-Type: application/json
+
+{
+  "name": "Andrew G",
+  "email": "email@email.com"
+}

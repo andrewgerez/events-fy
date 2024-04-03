@@ -14,10 +14,15 @@ Content-Type: application/json
 
 {
   "name": "Andrew G",
-  "email": "email3@email.com"
+  "email": "email18@email.com"
 }
 
 ###
 
 GET http://localhost:3333/events/c2935e4f-e3c2-477b-8ea9-6647d59582e0
+Content-Type: application/json
+
+###
+
+GET http://localhost:3333/attendees/1/badge
 Content-Type: application/json

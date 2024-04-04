@@ -2,6 +2,7 @@ import fastify from 'fastify'
 
 import fastifySwagger from '@fastify/swagger'
 import fastifySwaggerUI from '@fastify/swagger-ui'
+import fastifyCors from '@fastify/cors'
 
 import { serializerCompiler, validatorCompiler, jsonSchemaTransform } from 'fastify-type-provider-zod'
 import { createEvent } from './routes/create-event'
@@ -13,6 +14,10 @@ import { getEventAttendees } from './routes/get-events-attendees'
 import { errorHandler } from './error-handler'
 
 export const app = fastify()
+
+app.register(fastifyCors, {
+  origin: '*',
+})
 
 app.register(fastifySwagger, {
   swagger: {

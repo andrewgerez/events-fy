@@ -34,5 +34,5 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3333/events/18d175d0-fbc7-45bf-b7a6-3560e8a0c901/attendees
+GET http://localhost:3333/events/18d175d0-fbc7-45bf-b7a6-3560e8a0c901/attendees?query=Andrew
 Content-Type: application/json

@@ -2,14 +2,14 @@ POST http://localhost:3333/events
 Content-Type: application/json
 
 {
-  "title": "New Unite Summit",
+  "title": "Fastify Event",
   "details": null,
   "maximumAttendees": 1
 }
 
 ###
 
-POST http://localhost:3333/events/aee468f7-cae3-4a78-8d76-6737966bba26/attendees
+POST http://localhost:3333/events/18d175d0-fbc7-45bf-b7a6-3560e8a0c901/attendees
 Content-Type: application/json
 
 {
@@ -30,4 +30,9 @@ Content-Type: application/json
 ###
 
 GET http://localhost:3333/attendees/2/check-in
+Content-Type: application/json
+
+###
+
+GET http://localhost:3333/events/18d175d0-fbc7-45bf-b7a6-3560e8a0c901/attendees
 Content-Type: application/json

@@ -20,6 +20,17 @@ export async function getEventAttendees(app: FastifyInstance) {
       const { pageIndex } = req.query
 
       const attendees = await prisma.attendee.findMany({
+        select: {
+          id: true,
+          name: true,
+          email: true,
+          createdAt: true,
+          checkIn: {
+            select: {
+              createdAt: true
+            }
+          }
+        },
         where: {
           eventId,
         },
@@ -27,6 +38,16 @@ export async function getEventAttendees(app: FastifyInstance) {
         skip: pageIndex * 10,
       })
 
-      return reply.send(attendees)
+      return reply.send({
+        attendees: attendees.map(attendee => {
+          return {
+            id: attendee.id,
+            name: attendee.name,
+            email: attendee.email,
+            createdAt: attendee.createdAt,
+            checkedInAt: attendee.checkIn?.createdAt,
+          }
+        })
+      })
     })
 }

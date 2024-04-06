@@ -3,16 +3,28 @@ version: '3.8'
 services:
 
   postgres:
-    build:
-      context: .
-    container_name: eventsfy-pg
-    image: postgres
+    image: postgres:16.2-alpine3.19
+    container_name: db-eventsfy
     ports:
       - 5432:5432
     environment:
-      POSTGRES_USER: eventsfypostgres
-      POSTGRES_PASSWORD: docker
       POSTGRES_DB: eventsfy
-      PGDATA: /data/postgres
-    volumes:
-      - ./data/pg:/data/postgres
+      POSTGRES_USER: eventsfypostgres
+      POSTGRES_PASSWORD: evfyadmin
+    
+  events-fy:
+    build:
+      context: .
+    container_name: eventsfy-pg
+    ports:
+      - 3000:3333
+    environment:
+      - DATABASE_URL=postgresql://eventsfypostgres:evfyadmin@postgres:5432/eventsfy
+    depends_on:
+      - postgres
+    networks:
+      - eventsfynetwork
+
+networks:
+  eventsfynetwork:
+    driver: bridge

@@ -32,3 +32,5 @@ jobs:
     - name: Push image
       run: |
         docker push andrewgerez/eventsfy:${{ steps.generate_sha.outputs.sha }}
+        docker tag andrewgerez/eventsfy:${{ steps.generate_sha.outputs.sha }} andrewgerez/eventsfy:latest
+        docker push andrewgerez/eventsfy:latest

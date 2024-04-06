@@ -8,9 +8,13 @@ services:
     ports:
       - 5432:5432
     environment:
-      POSTGRES_DB: eventsfy
       POSTGRES_USER: eventsfypostgres
       POSTGRES_PASSWORD: evfyadmin
+      POSTGRES_DB: eventsfy
+    volumes:
+      - 'db:/var/lib/postgresql/data'
+    networks:
+      - eventsfynetwork
     
   events-fy:
     build:
@@ -28,3 +32,6 @@ services:
 networks:
   eventsfynetwork:
     driver: bridge
+
+volumes:
+  db:

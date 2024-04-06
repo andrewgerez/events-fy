@@ -1,7 +1,10 @@
 version: '3.8'
 
 services:
+
   postgres:
+    build:
+      context: .
     container_name: eventsfy-pg
     image: postgres
     ports:

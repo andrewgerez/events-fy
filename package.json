@@ -11,7 +11,7 @@
     "db:studio": "prisma studio"
   },
   "keywords": [],
-  "author": "",
+  "author": "Andrew Gerez",
   "license": "ISC",
   "prisma": {
     "seed": "tsx prisma/seed.ts"
